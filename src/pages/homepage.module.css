@@ -1,0 +1,29 @@
+.navLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.row{
+    height: 90vh;
+}
+.verticalTab{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.note_content{
+    display: flex;
+    flex-direction: column;
+    position: relative;  
+    justify-content: center;
+  }
+.tab_pane{
+    border: 2px solid darkgray;
+    width: 80%;
+}
+.note_content__button{
+    position: absolute;
+    right: 0;
+}
+  
