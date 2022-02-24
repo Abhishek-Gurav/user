@@ -1,10 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
-import Tab from 'react-bootstrap/Tab'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Nav from 'react-bootstrap/Nav'
-import styles from  "./homepage.module.css"
+import {Tab,Tabs, TabList, TabPanel } from 'react-tabs';
+import "./homepage.css"
 import { Link } from 'react-router-dom';
 function Homepage() {
     const [data, setData] = useState([]);
@@ -21,29 +18,50 @@ function Homepage() {
     await axios.delete(`http://localhost:3003/users/${id}`);
     loadUser();
   }
+  console.log(data);  
   return (
-  <>
-      <Tab.Container className={styles.container} id="left-tabs-example" defaultActiveKey="0">
-      <a className="userA btn btn-primary" href="/add">Add User</a>
-        <Row className={styles.row}>
-          <Col className={styles.verticalTab} sm={3}>
-            <Nav variant="pills" className="flex-column">
-                {
-                  data.map((item,index) => {
-                    return (
-                      <Nav.Item className={styles.navLink}>
-                        <Nav.Link  className={`mb-2 ${styles.navItem}`} eventKey={index}>{item.title}</Nav.Link>
-                      </Nav.Item>
-                    )
-                  })
-                }
-            </Nav>
-          </Col>
-          <Col sm={8} className={styles.note_content}>
-          {data.map((item,index) => {
-                  
-          return (<>
-                      <Tab.Content className={styles.tab}>
+    <div className="container">
+    <div className='header'>
+    <h1>Notes</h1>
+    <Link className='btn btn-light' to="/add">Add Note</Link>
+    </div>
+    <div className="App">
+      <Tabs>
+        <TabList>
+        {
+          data.map((item,index)=>{
+            return(
+            <Tab key={index}>
+            <p>{item.title}</p>
+          </Tab>
+            )
+          })
+        }
+        </TabList>
+
+        {
+          data.map((item,index)=>{
+            return(
+            <TabPanel key={index}>
+            <div className='panel-content'>
+            <h2>{item.title}</h2>
+            <p>{item.body}</p>
+            <Link className='btn btn-outline-light' to={`edit/${item.id}`}>Edit</Link>
+            <button className='btn btn-danger' onClick={() => deleteUser(item.id)}>Delete</button>
+            </div>
+            </TabPanel>
+            )
+          })
+        }
+      </Tabs>
+    </div>
+    </div>
+  )
+}
+
+export default Homepage
+
+{/* <Tab.Content className={styles.tab}>
                       <Tab.Pane className={styles.tab_pane} eventKey={index}>
                       
                       <a className={`btn btn-outline-primary ${styles.note_content__button}`} href={`/edit/${item.id}`}>Edit</a>
@@ -53,15 +71,4 @@ function Homepage() {
                         <br/>
                       <Link className={`btn btn-danger ${styles.note_content__button}`} onClick={()=> deleteUser(item.id)}>Delete</Link>
                       </Tab.Pane>
-                      </Tab.Content>
-                  </>
-                    )
-                  })}
-          </Col>
-        </Row>
-      </Tab.Container>
-      </>
-  )
-}
-
-export default Homepage
+                      </Tab.Content> */}
