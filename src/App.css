@@ -10,7 +10,11 @@
   right: 2vw;
   top: 5vh;
 }
-
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

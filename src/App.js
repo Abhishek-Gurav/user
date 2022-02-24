@@ -1,8 +1,9 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Homepage from "./pages/Homepage";
 import Edit from "./pages/Edit";
 import Add from "./pages/Add";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import {
   BrowserRouter as Router,
   Switch,

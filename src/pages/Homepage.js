@@ -32,7 +32,7 @@ function Homepage() {
                   data.map((item,index) => {
                     return (
                       <Nav.Item className={styles.navLink}>
-                      <Nav.Link className="mb-2" eventKey={index}>{item.title}</Nav.Link>
+                        <Nav.Link  className={`mb-2 ${styles.navItem}`} eventKey={index}>{item.title}</Nav.Link>
                       </Nav.Item>
                     )
                   })
